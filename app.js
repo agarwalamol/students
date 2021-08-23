@@ -1,6 +1,5 @@
 const express = require('express')
 const fs = require("fs");
-const Pool = require("pg").Pool;
 const fastcsv = require("fast-csv");
 const upload = require('express-fileupload')
 const app = express()
@@ -10,12 +9,17 @@ app.use(upload())
 const {models, sequelize} = require('./models/initSequelize')
 
 app.get('/', (req, res) => {
+        res.send(`<h1>Welcome to Students Node.js utlity.</h1><br><a href='/upload'>upload from csv</a>
+        <br><a href='/all'>Get all students</a>
+        <br><a href='/students'>Get Failed/Passed students</a>`)
+  })
+
+  app.get('/all', (req, res) => {
     models.students.findAll()
     .then((ob)=>{
         res.send(ob)
     })
   })
-  
   app.get('/upload', (req, res) => {
     res.sendFile(__dirname + '/upload.html')    
   })
@@ -49,9 +53,8 @@ app.get('/', (req, res) => {
             })
             .on("end", function() {
               // remove the first line: header
-              csvData.shift();
-
-              try{
+              csvData.shift();            
+             try{
                 for(let a of csvData){
                   const query =`INSERT INTO students (id, name, age, mark1, mark2, mark3) 
                   VALUES (${a[0]},'${a[1]}',${a[2]},${a[3]},${a[4]},${a[5]})`
