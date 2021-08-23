@@ -1,0 +1,21 @@
+{
+  "name": "impact-assignment",
+  "version": "1.0.0",
+  "description": "student-app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amol Agarwal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "fast-csv": "^4.3.6",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sequelize-auto": "^0.8.4"
+  }
+}
