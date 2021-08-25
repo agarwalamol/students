@@ -3,7 +3,7 @@ const fs = require("fs");
 const fastcsv = require("fast-csv");
 const upload = require('express-fileupload')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(upload())
 const {models, sequelize} = require('./models/initSequelize')
@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
                               })
                   }
                   else{
-                    res.send('Cannot accept only .csv files!')
+                    res.send('Can accept only .csv files!')
                   }
                   
                   
