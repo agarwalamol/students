@@ -9,10 +9,10 @@ app.use(upload())
 const { models, sequelize } = require('./models/initSequelize')
 
 app.get('/', (req, res) => {
-  res.send(`<h1>Welcome to Students Node.js utlity.</h1><br><a href='/upload'>upload from csv</a>
+  res.send(`<div align="center"><h1>Welcome to Students Node.js utlity.</h1><br><a href='/upload'>upload from csv</a>
         <br><a href='/all'>Get all students</a>
         <br><a href='/students?resultStatus=true'>Get Passed students</a><br>
-        <a href='/students?resultStatus=false'>Get Failed students</a>`)
+        <a href='/students?resultStatus=false'>Get Failed students</a><br><br><h4>Amol Agarwal</h4></div>`)
 })
 
 app.get('/all', (req, res) => {
