@@ -10,22 +10,22 @@ const sequelize = new Sequelize(db, user, password,
     {
         host: 'john.db.elephantsql.com',
         dialect: 'postgres',
-        dialectOptions:{
+        dialectOptions: {
             ssl: {
                 require: true,
-                rejectUnauthorized : false
+                rejectUnauthorized: false
             }
         }
     })
 
-    const options =
-    {
-        directory : output,
-        singulaize: false,
-        additional: {
-            timestamps : false
-        }
+const options =
+{
+    directory: output,
+    singulaize: false,
+    additional: {
+        timestamps: false
     }
+}
 
-    const auto = new sequelizeAuto(sequelize, null, null, options)
-    console.log(auto.run())
+const auto = new sequelizeAuto(sequelize, null, null, options)
+console.log(auto.run())

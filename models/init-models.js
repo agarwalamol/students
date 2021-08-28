@@ -3,8 +3,6 @@ var _students = require("./students");
 
 function initModels(sequelize) {
   var students = _students(sequelize, DataTypes);
-
-
   return {
     students,
   };

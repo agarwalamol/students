@@ -1,4 +1,4 @@
-const {Sequelize} = require ('sequelize')
+const { Sequelize } = require('sequelize')
 const initModels = require('./init-models')
 const config = require('../config/config')
 const env = 'development'
@@ -13,4 +13,4 @@ const sequelize = new Sequelize(
 )
 
 const models = initModels(sequelize);
-module.exports = {models: models , sequelize : sequelize}
+module.exports = { models: models, sequelize: sequelize }
