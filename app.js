@@ -65,7 +65,7 @@ app.post('/', (req, res) => {
             })
         }
         else {
-          res.send('Can accept only .csv files!')
+          res.send('Please upload only .csv files in correct format!')
         }
       })
 
@@ -76,9 +76,9 @@ app.post('/', (req, res) => {
           const query = `INSERT INTO students (id, name, age, mark1, mark2, mark3) 
                   VALUES (${a[0]},'${a[1]}',${a[2]},${a[3]},${a[4]},${a[5]})`
 
-          const [results, metadata] = await sequelize.query(query)
+          const [results, numberOfRowsInserted] = await sequelize.query(query)
 
-          count = count + metadata
+          count = count + numberOfRowsInserted
 
           if (count == data.length) {
             return count
@@ -93,6 +93,9 @@ app.post('/', (req, res) => {
 
     stream.pipe(csvStream);
 
+  }
+  else{
+    res.send('No file selected')
   }
 })
 
@@ -168,5 +171,5 @@ app.get('/students', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Students app listening at http://localhost:${port}`)
 })
